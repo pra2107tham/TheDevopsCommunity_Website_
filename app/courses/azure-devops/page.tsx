@@ -336,8 +336,8 @@ export default function AzureDevopsCurriculumPage() {
                 <div className="w-full h-[260px] sm:h-[360px] md:h-[420px] lg:h-[520px] xl:h-[620px]">
                   <iframe
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/842ctAkTwa8"
-                    title="Understand Docker in 4 Mins"
+                    src="https://www.youtube.com/embed/R9lH7uaSgUE"
+                    title="“Master Azure DevOps from Real Engineers | Hands-on Azure &amp; DevOps Course&quot;"
                     frameBorder="0"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
