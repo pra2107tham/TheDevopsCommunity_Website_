@@ -33,31 +33,23 @@ export default function MockInterviewsPage() {
     const inlineScript = document.createElement('script');
     inlineScript.type = 'text/javascript';
     inlineScript.text = `
-      (function (C, A, L) {
-        let p = function (a, ar) { a.q.push(ar); };
-        let d = C.document; C.Cal = C.Cal || function () {
-          let cal = C.Cal; let ar = arguments;
-          if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
-          if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;}
-          p(cal, ar);
-        };
-      })(window, "https://app.cal.com/embed/embed.js", "init");
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://cal.id/embed-link/embed.js", "init");
 
-      Cal("init", "devops-mock-interview", {origin:"https://app.cal.com"});
+      Cal("init", "default", {origin:"https://cal.id"});
 
-      Cal.ns["devops-mock-interview"]("inline", {
-        elementOrSelector:"#my-cal-inline-devops-mock-interview",
+      Cal.ns["default"]("inline", {
+        elementOrSelector:"#my-cal-inline",
         config: {"layout":"month_view"},
-        calLink: "nitish-sagar-akqnjf/devops-mock-interview",
+        calLink: "devops/devops-mock-interviews",
       });
 
-      Cal.ns["devops-mock-interview"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+      Cal.ns["default"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#007ee5"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
     `;
     document.body.appendChild(inlineScript);
 
     // Detect when Cal iframe is injected to remove loader
     const checkLoaded = () => {
-      const container = document.getElementById('my-cal-inline-devops-mock-interview');
+      const container = document.getElementById('my-cal-inline');
       if (container && container.querySelector('iframe')) {
         setCalLoaded(true);
         return true;
@@ -628,7 +620,7 @@ export default function MockInterviewsPage() {
                     </div>
                   </div>
                 )}
-                <div id="my-cal-inline-devops-mock-interview" style={{ width: '100%', height: '100%', overflow: 'scroll' }} />
+                <div id="my-cal-inline" style={{ width: '100%', height: '100%', overflow: 'scroll' }} />
               </div>
             </div>
           </motion.div>
