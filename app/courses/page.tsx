@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { FaAws, FaAngleRight } from "react-icons/fa";
 import { VscAzure } from "react-icons/vsc";
+import { SiNetflix } from "react-icons/si";
 
 const courses = [
   {
@@ -21,8 +22,15 @@ const courses = [
     link: "/courses/aws-devops",
     tags: ["AWS", "DevOps", "CI/CD", "Terraform", "Kubernetes"],
   },
-
-  // Add more courses here if needed
+  {
+    id: "devsecops-netflix-project",
+    title: "DevSecOps Project: Netflix-Clone on AWS",
+    description: "Deploy a full-stack Netflix-clone on AWS with CI/CD, Security Automation, Monitoring & GitOps. Build production-grade DevSecOps pipelines with real-world hands-on experience.",
+    icon: <SiNetflix className="text-red-600 w-12 h-12" />,
+    link: "/courses/devsecops-netflix-project",
+    tags: ["DevSecOps", "AWS", "CI/CD", "Security", "GitOps"],
+    isProject: true,
+  },
 ];
 
 const cardVariants = {
@@ -51,10 +59,10 @@ export default function CoursesPage() {
           className="text-center mb-12 md:mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-blue-900 tracking-tight">
-            Azure & AWS DevOps Courses
+            DevOps Courses & Projects
           </h1>
           <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">
-            Accelerate your career with our industry-leading DevOps courses, designed by experts for all skill levels.
+            Accelerate your career with our industry-leading DevOps courses and hands-on projects, designed by experts for all skill levels.
           </p>
         </motion.div>
 
@@ -65,7 +73,7 @@ export default function CoursesPage() {
           transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 100 }}
           className="mt-10"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {courses.map((course, index) => (
               <motion.div
                 key={course.id}
@@ -85,8 +93,18 @@ export default function CoursesPage() {
                   </div>
                   <div className="p-6 md:p-7">
                     <div className="mb-4 flex items-center justify-between">
-                      <span className="text-xs font-semibold text-blue-900/80">{course.id === 'azure-devops' ? 'Azure DevOps Course' : course.id === 'aws-devops' ? 'AWS DevOps Course' : 'DevOps Course'}</span>
-                      <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-200">Featured</span>
+                      <span className="text-xs font-semibold text-blue-900/80">
+                        {course.id === 'azure-devops' ? 'Azure DevOps Course' : 
+                         course.id === 'aws-devops' ? 'AWS DevOps Course' : 
+                         course.isProject ? 'Hands-On Project' : 'DevOps Course'}
+                      </span>
+                      <span className={`rounded-full px-3 py-1 text-xs font-semibold ring-1 ${
+                        course.isProject 
+                          ? 'bg-red-50 text-red-700 ring-red-200' 
+                          : 'bg-blue-50 text-blue-700 ring-blue-200'
+                      }`}>
+                        {course.isProject ? 'Project' : 'Featured'}
+                      </span>
                     </div>
                     <h2 className="mb-3 line-clamp-2 text-2xl md:text-3xl font-black leading-tight tracking-tight text-blue-900">{course.title}</h2>
                     <p className="mb-5 line-clamp-4 text-[1rem] leading-relaxed text-neutral-700">{course.description}</p>
