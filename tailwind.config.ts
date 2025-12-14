@@ -9,7 +9,8 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-          sans: ["Poppins", "Arial", "Helvetica", "sans-serif"],
+          sans: ["var(--font-poppins)", "Poppins", "Arial", "Helvetica", "sans-serif"],
+          outfit: ["var(--font-outfit)", "Outfit", "sans-serif"],
         },
         animation: {
           shimmer: "shimmer 2s linear infinite",

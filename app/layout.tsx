@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Poppins, Outfit } from "next/font/google";
 import "./globals.css";
-import { NavbarTop } from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
 import { Analytics } from "@vercel/analytics/next";
 // import WebinarPopup from "@/components/WebinarPopup/WebinarPopup"
 
@@ -22,9 +20,18 @@ const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   display: 'swap',
+  variable: "--font-poppins",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
+  weight: ["600"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://devops-community.com"),
   title: "DevOps Community",
   description: "Master Your DevOps Career",
   icons: {
@@ -71,17 +78,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="dns-prefetch" href="https://i.ytimg.com" />
       </head>
-      <body className={`${geist.variable} ${geistMono.variable} ${poppins.className} min-h-screen bg-[white/80]`}>
+      <body className={`${geist.variable} ${geistMono.variable} ${poppins.variable} ${outfit.variable} ${poppins.className} min-h-screen antialiased`}>
         <Analytics />
-        <div className="fixed top-4 left-0 right-0 z-50">
-          <NavbarTop />
-        </div>
         <main className="w-full min-h-screen">
-          <div className="w-full max-w-[2000px] mx-auto">
-            {children}
-          </div>
+          {children}
         </main>
-        <Footer />
         {/* WebinarPopup disabled as there is no upcoming webinar */}
       </body>
     </html>

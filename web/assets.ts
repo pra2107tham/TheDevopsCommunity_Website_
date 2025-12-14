@@ -1,0 +1,31 @@
+// Image assets exported from Figma
+export const imgImage10 = "/image17.png";
+export const imgImage2 = "/image2.jpg";
+export const imgImage3 = "/image3.jpg";
+export const imgCustomerPhoto1 = "/customerPhoto1.jpg";
+export const imgShape1 = "/shape1.png";
+export const imgFolder2 = "/folder2.png";
+export const imgVector = "/vector.png";
+export const imgGroup3 = "/group3.png";
+export const imgFrame = "/frame.png";
+export const imgFrame1 = "/frame1.png";
+export const imgFrame2 = "/frame2.png";
+export const imgFrame3 = "/frame3.png";
+export const imgFrame4 = "/frame4.png";
+export const imgFrame5 = "/frame5.png";
+export const imgFrame6 = "/frame6.png";
+export const imgFrame7 = "/frame7.png";
+export const imgGroup = "/group.png";
+export const imgGroup1 = "/group1.png";
+export const imgGroup2 = "/group2.png";
+export const imgGroup4 = "/group4.png";
+export const imgFrame57 = "/frame57.png";
+export const imgFrame1000003337 = "/frame1000003337.png";
+export const imgFrame1000003338 = "/frame1000003338.png";
+export const imgBxsMessage = "/bxsMessage.png";
+export const imgShape2 = "/shape2.png";
+export const imgFrame2147223317 = "/frame2147223317.png";
+export const imgGroup232 = "/group232.png";
+export const imgGroup231 = "/group231.png";
+export const imgLine1 = "/line1.png";
+

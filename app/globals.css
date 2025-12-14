@@ -320,3 +320,246 @@ html {
 .animate-blink {
   animation: blink 1s step-end infinite;
 }
+
+/* Prevent unwanted text breaking and ensure proper font rendering */
+* {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure Poppins and Outfit fonts render correctly */
+body, .font-poppins {
+  font-family: var(--font-poppins), 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.font-outfit {
+  font-family: var(--font-outfit), 'Outfit', sans-serif;
+}
+
+/* Enhanced Glassmorphism Styles */
+.glass-card {
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    /* Outer depth shadows - multiple layers for realism */
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    /* Inner highlight edges - subtle and refined */
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15),
+    /* Soft inner glow - refined gradient effect */
+    inset 0 0 20px 10px rgba(255, 255, 255, 0.12),
+    inset 0 0 40px 20px rgba(255, 255, 255, 0.04);
+  position: relative;
+  overflow: hidden;
+  /* Backdrop filter - webkit prefix first, then standard */
+  -webkit-backdrop-filter: blur(11px);
+  backdrop-filter: blur(11px);
+  /* Create new layer for backdrop-filter to work */
+  transform: translateZ(0);
+  will-change: backdrop-filter;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.3),
+    transparent 30%,
+    transparent 70%,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.4)
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Variants for different blur intensities */
+.glass-card-blur-sm {
+  -webkit-backdrop-filter: blur(11px);
+  backdrop-filter: blur(11px);
+}
+
+.glass-card-blur-md {
+  -webkit-backdrop-filter: blur(18.6px);
+  backdrop-filter: blur(18.6px);
+}
+
+.glass-card-blur-lg {
+  -webkit-backdrop-filter: blur(21.9px);
+  backdrop-filter: blur(21.9px);
+}
+
+/* Variants for different opacity levels */
+.glass-card-opacity-light {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.glass-card-opacity-medium {
+  background: rgba(255, 255, 255, 0.58) !important;
+}
+
+.glass-card-opacity-heavy {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Enhanced glassmorphism for main container */
+.glass-card-main {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    /* Outer depth shadows - multiple layers for realism */
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    /* Inner highlight edges - subtle and refined */
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15),
+    /* Soft inner glow - replaced harsh white with subtle gradient effect */
+    inset 0 0 30px 15px rgba(255, 255, 255, 0.15),
+    inset 0 0 60px 30px rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  /* Backdrop filter - webkit prefix first, then standard */
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
+  /* Create new layer for backdrop-filter to work */
+  transform: translateZ(0);
+  will-change: backdrop-filter;
+}
+
+.glass-card-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.glass-card-main::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.3),
+    transparent 30%,
+    transparent 70%,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.4)
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Blue-tinted glassmorphism for contrasting cards - darker like footer */
+.glass-card-blue {
+  background: #66707d !important;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    /* Outer depth shadows - darker for contrast */
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    /* Inner highlight edges - subtle white highlights */
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  /* Reduced backdrop filter for less transparency */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  /* Create new layer for backdrop-filter to work */
+  transform: translateZ(0);
+  will-change: backdrop-filter;
+}
+
+.glass-card-blue::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.glass-card-blue::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.2),
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.4)
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.6;
+}
