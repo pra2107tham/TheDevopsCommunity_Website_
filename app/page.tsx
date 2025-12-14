@@ -35,7 +35,7 @@ export default function Home() {
 
       {/* Scrollable Content Section */}
       <div className="relative w-full mt-[120px]">
-        <div className="relative flex flex-col gap-[80px] md:gap-[120px] items-center justify-center py-[60px] md:py-[129px] px-4 max-w-[1447.97px] mx-auto">
+        <div className="relative flex flex-col gap-[80px] md:gap-[120px] items-center justify-center pt-[60px] md:pt-[129px] pb-[40px] md:pb-[60px] px-4 max-w-[1447.97px] mx-auto">
           <Companies />
           <Features />
           <Testimonials />

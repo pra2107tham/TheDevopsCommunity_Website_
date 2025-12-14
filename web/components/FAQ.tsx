@@ -42,7 +42,7 @@ function InquiryModal() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="glass-card glass-card-blur-md glass-card-opacity-light flex h-[52px] items-center justify-center px-[18px] py-[12px] relative rounded-[30px] shrink-0 w-[164px] hover:bg-[rgba(255,255,255,0.2)] transition-colors cursor-pointer"
+        className="bg-[#66707d] flex h-[52px] items-center justify-center px-[18px] py-[12px] relative rounded-[30px] shrink-0 w-[164px] hover:bg-[#5a626d] transition-colors cursor-pointer shadow-[-1px_-1px_11.9px_0px_rgba(255,255,255,0.5)]"
       >
         <p className="font-sans font-semibold leading-normal not-italic relative shrink-0 text-[16px] text-white z-10 whitespace-nowrap">
           Contact Us

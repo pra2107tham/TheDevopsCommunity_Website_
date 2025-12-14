@@ -17,16 +17,6 @@ const features = [
     icon: imgGroup2,
     isBlue: false,
   },
-  {
-    title: "Peer community + Mock interview help",
-    icon: imgGroup,
-    isBlue: false,
-  },
-  {
-    title: "Lifetime access to training materials",
-    icon: imgGroup1,
-    isBlue: false,
-  },
 ];
 
 export default function Features() {
@@ -36,7 +26,7 @@ export default function Features() {
         DevOps That Gets You Hired
       </p>
       <div className="flex flex-col gap-[22px] items-center justify-between px-[14px] py-[12px] relative shrink-0 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[22px] items-center relative shrink-0 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px] items-center relative shrink-0 w-full">
           {features.map((feature, index) => (
             <div
               key={index}

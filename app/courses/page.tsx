@@ -1,16 +1,22 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { FaAws, FaAngleRight } from "react-icons/fa";
 import { VscAzure } from "react-icons/vsc";
 import { SiNetflix } from "react-icons/si";
+import Header from "@/web/components/Header";
+import Footer from "@/web/components/Footer";
+import { imgImage10 } from "@/web/assets";
 
 const courses = [
   {
     id: "azure-devops",
     title: "Azure DevOps Course",
     description: "Master Azure, Azure DevOps and core DevOps tools: fundamentals, networking, compute, storage, databases, AKS, CI/CD (YAML), Terraform, Docker, Kubernetes, monitoring, security and a real capstone project.",
-    icon: <VscAzure className="text-blue-600 w-12 h-12" />,
+    icon: <VscAzure className="text-white w-8 h-8" />,
+    iconBg: "bg-[#0078d4]",
     link: "/courses/azure-devops",
     tags: ["Azure", "Azure DevOps", "Terraform", "Docker", "Kubernetes"],
   },
@@ -18,7 +24,8 @@ const courses = [
     id: "aws-devops",
     title: "AWS DevOps Certification Course",
     description: "Master DevOps principles and tools on the AWS cloud. From CI/CD pipelines to Infrastructure as Code, become a certified AWS DevOps Engineer.",
-    icon: <FaAws className="text-orange-500 w-12 h-12" />,
+    icon: <FaAws className="text-white w-8 h-8" />,
+    iconBg: "bg-[#ff9900]",
     link: "/courses/aws-devops",
     tags: ["AWS", "DevOps", "CI/CD", "Terraform", "Kubernetes"],
   },
@@ -26,7 +33,8 @@ const courses = [
     id: "devsecops-netflix-project",
     title: "DevSecOps Project: Netflix-Clone on AWS",
     description: "Deploy a full-stack Netflix-clone on AWS with CI/CD, Security Automation, Monitoring & GitOps. Build production-grade DevSecOps pipelines with real-world hands-on experience.",
-    icon: <SiNetflix className="text-red-600 w-12 h-12" />,
+    icon: <SiNetflix className="text-white w-8 h-8" />,
+    iconBg: "bg-[#e50914]",
     link: "/courses/devsecops-netflix-project",
     tags: ["DevSecOps", "AWS", "CI/CD", "Security", "GitOps"],
     isProject: true,
@@ -45,90 +53,293 @@ const cardVariants = {
 
 export default function CoursesPage() {
   return (
-    <main className="relative w-full flex flex-col items-center bg-gradient-to-b from-blue-50 to-blue-100 text-neutral-800 py-20 md:py-28">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 100 }}
-        className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, type: "spring" }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-blue-900 tracking-tight">
-            DevOps Courses & Projects
-          </h1>
-          <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">
-            Accelerate your career with our industry-leading DevOps courses and hands-on projects, designed by experts for all skill levels.
-          </p>
-        </motion.div>
+    <div className="relative w-full min-h-screen overflow-x-hidden">
+      {/* Background Image */}
+      <div className="fixed inset-0 -z-10 w-full h-full">
+        <Image
+          src={imgImage10}
+          alt="DevOps Community Background"
+          fill
+          className="object-cover object-center pointer-events-none"
+          priority
+          unoptimized
+        />
+      </div>
+      {/* Fallback background color */}
+      <div className="fixed inset-0 -z-20 bg-[#dee2e9]" />
 
-        {/* Courses grid (unchanged, but framed in new layout) */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 100 }}
-          className="mt-10"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-            {courses.map((course, index) => (
-              <motion.div
-                key={course.id}
-                custom={index}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                className="relative group"
-              >
-                <div className="pointer-events-none absolute -inset-1 rounded-3xl bg-gradient-to-b from-blue-300/25 via-blue-200/10 to-transparent blur-xl opacity-70 group-hover:opacity-90 transition-opacity" />
+      {/* Main Content Container with Header and Hero */}
+      <div className="glass-card-main relative min-h-[700px] md:min-h-[800px] mx-auto my-[23px] rounded-[32px] w-[calc(100%-50px)] max-w-[1383.548px]">
+        <div className="relative min-h-[700px] md:min-h-[800px] w-full z-10">
+          <Header />
+          {/* Courses Hero Section */}
+          <div className="absolute flex flex-col md:flex-row gap-[40px] md:gap-[60px] items-start left-0 md:left-[59px] top-[120px] md:top-[140px] w-full md:w-[calc(100%-118px)] max-w-full md:max-w-none px-4 md:px-0 md:pr-[59px] pb-0">
+            {/* Left Content */}
+            <div className="flex flex-col gap-[30px] items-start relative shrink-0 w-full md:w-[60%]">
+              <div className="flex flex-col gap-[20px] items-start relative shrink-0 w-full">
+                <h1 className="font-outfit font-semibold relative shrink-0 text-[#2d2d2d] text-[32px] md:text-[56px] w-full leading-tight">
+                  DevOps Courses & Projects
+                </h1>
+                <p className="font-sans font-medium not-italic relative shrink-0 text-[#1447e6] text-[18px] md:text-[22px] w-full">
+                  Master AWS DevOps, Azure DevOps, and Real-World DevSecOps Projects
+                </p>
+                <p className="font-sans font-normal not-italic relative shrink-0 text-[#2d2d2d] text-[16px] md:text-[18px] w-full leading-relaxed">
+                  Accelerate your career with our industry-leading DevOps courses and hands-on projects. Learn from engineers with 10+ years of experience from top tech companies. Get hands-on experience with real-world projects that prepare you for DevOps roles at leading organizations.
+                </p>
+              </div>
+              
+              {/* Feature Badges */}
+              <div className="flex flex-wrap gap-[15px] items-center relative shrink-0 w-full">
+                <div className="glass-card glass-card-blur-lg glass-card-opacity-medium flex h-[40px] items-center justify-center px-[18px] py-[12px] relative rounded-[30px] shrink-0">
+                  <p className="font-sans font-normal leading-normal not-italic relative shrink-0 text-[#1447e6] text-[14px] md:text-[16px] z-10 whitespace-nowrap">
+                    Live Classes
+                  </p>
+                </div>
+                <div className="glass-card glass-card-blur-lg glass-card-opacity-light flex h-[40px] items-center justify-center px-[18px] py-[12px] relative rounded-[30px] shrink-0">
+                  <p className="font-sans font-normal leading-normal not-italic relative shrink-0 text-[#1447e6] text-[14px] md:text-[16px] z-10 whitespace-nowrap">
+                    Hands-On Projects
+                  </p>
+                </div>
+                <div className="glass-card glass-card-blur-lg glass-card-opacity-light flex h-[40px] items-center justify-center px-[18px] py-[12px] relative rounded-[30px] shrink-0">
+                  <p className="font-sans font-normal leading-normal not-italic relative shrink-0 text-[#1447e6] text-[14px] md:text-[16px] z-10 whitespace-nowrap">
+                    Expert Mentorship
+                  </p>
+                </div>
+                <div className="glass-card glass-card-blur-lg glass-card-opacity-light flex h-[40px] items-center justify-center px-[18px] py-[12px] relative rounded-[30px] shrink-0">
+                  <p className="font-sans font-normal leading-normal not-italic relative shrink-0 text-[#1447e6] text-[14px] md:text-[16px] z-10 whitespace-nowrap">
+                    Resume Support
+                  </p>
+                </div>
+              </div>
 
-                <div className="relative rounded-2xl border border-blue-200/70 bg-white shadow-[0_8px_24px_rgba(30,64,175,0.08)] hover:shadow-[0_14px_36px_rgba(30,64,175,0.12)]">
-                  <div className={`absolute top-0 left-0 right-0 h-1 ${index % 2 === 0 ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600' : 'bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500'}`} />
-                  <div className="absolute -top-6 -left-6 h-20 w-20 rounded-full bg-blue-50 ring-1 ring-blue-200 flex items-center justify-center text-blue-700 shadow-inner">
-                    {course.icon}
+              {/* Course Highlights */}
+              <div className="flex flex-col gap-[15px] items-start relative shrink-0 w-full">
+                <p className="font-sans font-semibold text-[#2d2d2d] text-[16px] md:text-[18px]">
+                  What You&apos;ll Learn:
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px] w-full">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[#0078d4] flex items-center justify-center p-2 rounded-[8px] shrink-0 size-[36px]">
+                      <VscAzure className="text-white w-5 h-5" />
+                    </div>
+                    <p className="font-sans font-normal text-[#2d2d2d] text-[14px] md:text-[16px]">
+                      Azure DevOps & Cloud Services
+                    </p>
                   </div>
-                  <div className="p-6 md:p-7">
-                    <div className="mb-4 flex items-center justify-between">
-                      <span className="text-xs font-semibold text-blue-900/80">
-                        {course.id === 'azure-devops' ? 'Azure DevOps Course' : 
-                         course.id === 'aws-devops' ? 'AWS DevOps Course' : 
-                         course.isProject ? 'Hands-On Project' : 'DevOps Course'}
-                      </span>
-                      <span className={`rounded-full px-3 py-1 text-xs font-semibold ring-1 ${
-                        course.isProject 
-                          ? 'bg-red-50 text-red-700 ring-red-200' 
-                          : 'bg-blue-50 text-blue-700 ring-blue-200'
-                      }`}>
-                        {course.isProject ? 'Project' : 'Featured'}
-                      </span>
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[#ff9900] flex items-center justify-center p-2 rounded-[8px] shrink-0 size-[36px]">
+                      <FaAws className="text-white w-5 h-5" />
                     </div>
-                    <h2 className="mb-3 line-clamp-2 text-2xl md:text-3xl font-black leading-tight tracking-tight text-blue-900">{course.title}</h2>
-                    <p className="mb-5 line-clamp-4 text-[1rem] leading-relaxed text-neutral-700">{course.description}</p>
-                    <div className="mb-6 flex flex-wrap gap-2.5">
-                      {course.tags.map((tag, i) => (
-                        <span key={tag} className={`inline-block text-xs font-semibold px-3 py-1 rounded-full border transition-colors duration-200 shadow-sm ${i === 0 ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-white text-neutral-600 border-neutral-200'}`}>{tag}</span>
-                      ))}
+                    <p className="font-sans font-normal text-[#2d2d2d] text-[14px] md:text-[16px]">
+                      AWS DevOps & CI/CD Pipelines
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[#e50914] flex items-center justify-center p-2 rounded-[8px] shrink-0 size-[36px]">
+                      <SiNetflix className="text-white w-5 h-5" />
                     </div>
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="text-xs font-semibold text-blue-900/70">Starts weekly • Live doubt support</div>
-                      <Link href={course.link} passHref>
-                        <button className="rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-5 transition-colors flex items-center justify-center gap-2 shadow-[0_10px_20px_rgba(30,64,175,0.25)]">
-                          <span>View Details</span>
-                          <FaAngleRight className="transition-transform duration-300" />
-                        </button>
-                      </Link>
+                    <p className="font-sans font-normal text-[#2d2d2d] text-[14px] md:text-[16px]">
+                      Real-World DevSecOps Projects
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[#66707d] flex items-center justify-center p-2 rounded-[8px] shrink-0 size-[36px]">
+                      <FaAngleRight className="text-white w-5 h-5" />
+                    </div>
+                    <p className="font-sans font-normal text-[#2d2d2d] text-[14px] md:text-[16px]">
+                      Docker, Kubernetes & Terraform
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content - Stats/Highlights */}
+            <div className="flex flex-col gap-[20px] items-start relative shrink-0 w-full md:w-[38%] md:items-stretch">
+              <div className="glass-card glass-card-blur-md glass-card-opacity-light flex flex-col gap-[24px] items-start px-[24px] py-[28px] relative rounded-[12px] shrink-0 w-full h-full">
+                <p className="font-sans font-semibold text-[#2d2d2d] text-[18px] md:text-[20px] w-full">
+                  Why Choose Our Courses?
+                </p>
+                <div className="flex flex-col gap-[18px] items-start w-full">
+                  <div className="flex items-start gap-3 w-full">
+                    <div className="bg-[#1447e6] flex items-center justify-center p-2 rounded-[8px] shrink-0 size-[36px] mt-0.5">
+                      <span className="text-white text-[18px] font-bold">✓</span>
+                    </div>
+                    <div className="flex flex-col gap-1 flex-1">
+                      <p className="font-sans font-semibold text-[#2d2d2d] text-[14px] md:text-[16px]">
+                        Industry-Relevant Curriculum
+                      </p>
+                      <p className="font-sans font-normal text-[#2d2d2d]/70 text-[12px] md:text-[14px] leading-relaxed">
+                        Updated content aligned with current industry standards
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 w-full">
+                    <div className="bg-[#1447e6] flex items-center justify-center p-2 rounded-[8px] shrink-0 size-[36px] mt-0.5">
+                      <span className="text-white text-[18px] font-bold">✓</span>
+                    </div>
+                    <div className="flex flex-col gap-1 flex-1">
+                      <p className="font-sans font-semibold text-[#2d2d2d] text-[14px] md:text-[16px]">
+                        Project-Based Learning
+                      </p>
+                      <p className="font-sans font-normal text-[#2d2d2d]/70 text-[12px] md:text-[14px] leading-relaxed">
+                        Build real-world projects for your portfolio
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 w-full">
+                    <div className="bg-[#1447e6] flex items-center justify-center p-2 rounded-[8px] shrink-0 size-[36px] mt-0.5">
+                      <span className="text-white text-[18px] font-bold">✓</span>
+                    </div>
+                    <div className="flex flex-col gap-1 flex-1">
+                      <p className="font-sans font-semibold text-[#2d2d2d] text-[14px] md:text-[16px]">
+                        Lifetime Access
+                      </p>
+                      <p className="font-sans font-normal text-[#2d2d2d]/70 text-[12px] md:text-[14px] leading-relaxed">
+                        Access course materials and updates forever
+                      </p>
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+            </div>
           </div>
-        </motion.div>
-      </motion.div>
-    </main>
+          
+          {/* Scroll Down Button */}
+          <button
+            onClick={() => {
+              const coursesSection = document.getElementById('courses-section');
+              if (coursesSection) {
+                coursesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+            className="absolute bottom-[20px] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity group"
+          >
+            <p className="font-sans font-normal text-[#2d2d2d]/60 text-[12px] whitespace-nowrap group-hover:text-[#1447e6] transition-colors">
+              Explore Courses
+            </p>
+            <div className="animate-bounce">
+              <svg 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-[#2d2d2d]/60 group-hover:text-[#1447e6] transition-colors"
+              >
+                <path 
+                  d="M7 10L12 15L17 10" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {/* Courses Content Section */}
+      <div id="courses-section" className="relative w-full mt-[80px] md:mt-[120px]">
+        <div className="relative flex flex-col gap-[60px] md:gap-[80px] items-center justify-center pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px] px-4 max-w-[1447.97px] mx-auto">
+          {/* Courses Grid */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 100 }}
+            className="w-full"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] items-stretch w-full">
+              {courses.map((course, index) => (
+                <motion.div
+                  key={course.id}
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="relative group w-full"
+                >
+                  <div className={`${
+                    course.isProject 
+                      ? "glass-card-blue" 
+                      : "glass-card glass-card-blur-md glass-card-opacity-light"
+                  } flex flex-col h-full items-start px-[24px] py-[28px] relative rounded-[12px] shrink-0 w-full hover:scale-[1.02] transition-transform`}>
+                    <div className="flex flex-col gap-[20px] items-start relative shrink-0 w-full z-10">
+                      {/* Icon and Badge */}
+                      <div className="flex items-center justify-between w-full">
+                        <div className={`${course.iconBg} flex items-center justify-center p-[12px] relative rounded-[50px] shrink-0 size-[60px] shadow-lg`}>
+                          {course.icon}
+                        </div>
+                        <span className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap ${
+                          course.isProject 
+                            ? "bg-white/50 text-white" 
+                            : "glass-card glass-card-blur-sm glass-card-opacity-medium text-[#2d2d2d]"
+                        }`}>
+                          {course.isProject ? 'Project' : 'Featured'}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h2 className={`font-sans font-semibold leading-tight text-[20px] md:text-[24px] w-full ${
+                        course.isProject ? "text-white" : "text-[#2d2d2d]"
+                      }`}>
+                        {course.title}
+                      </h2>
+
+                      {/* Description */}
+                      <p className={`font-sans font-normal leading-relaxed text-[14px] md:text-[16px] w-full ${
+                        course.isProject ? "text-white/90" : "text-[#2d2d2d]"
+                      }`}>
+                        {course.description}
+                      </p>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2 w-full">
+                        {course.tags.map((tag, i) => (
+                          <span 
+                            key={tag} 
+                            className={`inline-block text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap ${
+                              course.isProject
+                                ? "bg-white/30 text-white"
+                                : "glass-card glass-card-blur-sm glass-card-opacity-light text-[#2d2d2d]"
+                            }`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Footer */}
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 w-full mt-auto pt-4">
+                        <div className={`text-xs font-semibold whitespace-nowrap ${
+                          course.isProject ? "text-white/80" : "text-[#2d2d2d]/70"
+                        }`}>
+                          Starts weekly • Live doubt support
+                        </div>
+                        <Link href={course.link} className="w-full sm:w-auto">
+                          <button className={`rounded-[30px] font-semibold py-3 px-5 transition-colors flex items-center justify-center gap-2 w-full sm:w-auto whitespace-nowrap ${
+                            course.isProject
+                              ? "bg-white/20 hover:bg-white/30 text-white border border-white/30"
+                              : "bg-[#66707d] hover:bg-[#5a626d] text-white shadow-[-1px_-1px_11.9px_0px_rgba(255,255,255,0.5)]"
+                          }`}>
+                            <span className="whitespace-nowrap">View Details</span>
+                            <FaAngleRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Footer */}
+          <Footer />
+        </div>
+      </div>
+    </div>
   );
-} 
+}
