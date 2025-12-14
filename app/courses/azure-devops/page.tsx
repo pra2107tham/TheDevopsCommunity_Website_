@@ -2,6 +2,7 @@
 
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { FaCloud, FaLock, FaDatabase, FaServer, FaUserShield, FaClipboardList, FaCogs, FaTools, FaUserTie } from "react-icons/fa";
 import { SiTerraform, SiApachespark } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
@@ -9,6 +10,9 @@ import { MdStorage, MdDns, MdOutlineMonitor, MdOutlineApi } from "react-icons/md
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import RazorpayButton from "@/components/RazorpayButton/AWS_Course_RazorpayButton";
 import { motion } from "motion/react";
+import Header from "@/web/components/Header";
+import Footer from "@/web/components/Footer";
+import { imgImage10 } from "@/web/assets";
 
 // Updated curriculum per provided outline
 const modules = [
@@ -226,19 +230,14 @@ const modules = [
 
 function CurriculumCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
   return (
-    <div className="relative border-2 border-blue-200 rounded-3xl p-2 bg-transparent overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <div className="bg-white border border-blue-100 rounded-2xl p-6 flex flex-col gap-4 shadow-lg">
-        {/* Lamp-like gradient accent at top left */}
-        <div className="absolute top-0 left-8 h-0.5 w-16 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full z-20" />
-        <div className="absolute top-[-8px] left-6 w-24 h-6 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 opacity-30 blur-2xl rounded-full z-10" />
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shadow-md">
-            {icon}
-          </div>
-          <div className="font-bold text-blue-900 text-lg">{title}</div>
+    <div className="glass-card glass-card-blur-sm glass-card-opacity-light flex flex-col gap-4 items-start px-[20px] py-[24px] relative rounded-[12px] shrink-0 w-full hover:scale-[1.02] transition-transform">
+      <div className="flex items-center gap-3 w-full">
+        <div className="w-[48px] h-[48px] rounded-full bg-[#1447e6]/10 flex items-center justify-center shrink-0">
+          {icon}
         </div>
-        <div className="text-neutral-600 text-base leading-relaxed">{desc}</div>
+        <div className="font-outfit font-semibold text-[#2d2d2d] text-[16px] md:text-[18px] leading-tight flex-1">{title}</div>
       </div>
+      <div className="font-sans font-normal text-[#2d2d2d] text-[14px] md:text-[15px] leading-relaxed w-full">{desc}</div>
     </div>
   );
 }
@@ -254,159 +253,196 @@ export default function AzureDevopsCurriculumPage() {
   const descriptionWords = "Master Azure DevOps with our comprehensive curriculum covering cloud computing, networking, security, and more. Learn from industry experts and get hands-on experience with real-world projects.";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 text-neutral-800 py-10 px-4 pt-24 md:pt-28">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left side - Modules (70%) */}
-          <div className="lg:w-[70%]">
-            <div className="mb-12 p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-blue-100">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex items-center gap-3 mb-1"
-              >
+    <div className="relative w-full min-h-screen overflow-x-hidden">
+      {/* Background Image */}
+      <div className="fixed inset-0 -z-10 w-full h-full">
+        <Image
+          src={imgImage10}
+          alt="DevOps Community Background"
+          fill
+          className="object-cover object-center pointer-events-none"
+          priority
+          unoptimized
+        />
+      </div>
+      {/* Fallback background color */}
+      <div className="fixed inset-0 -z-20 bg-[#dee2e9]" />
+
+      {/* Main Content Container with Header */}
+      <div className="glass-card-main relative mx-auto my-[23px] rounded-[32px] w-[calc(100%-50px)] max-w-[1383.548px]">
+        <div className="relative w-full z-10">
+          <Header />
+          
+          {/* Hero Section with YouTube Embed */}
+          <div className="relative w-full pt-[120px] md:pt-[140px] pb-[60px] px-4 md:px-[59px]">
+            <div className="flex flex-col md:flex-row gap-[40px] md:gap-[60px] items-start">
+              {/* Left side - Hero Content */}
+              <div className="flex-1 w-full">
                 <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex items-center gap-3 mb-1"
                 >
-                  <VscAzure className="text-blue-600" size={55} />
+                  <motion.div
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="w-[60px] h-[60px] rounded-full bg-[#1447e6]/10 flex items-center justify-center"
+                  >
+                    <VscAzure className="text-[#1447e6]" size={40} />
+                  </motion.div>
+                  <div className="text-3xl lg:text-5xl lg:leading-tight font-outfit font-semibold text-[#2d2d2d]">
+                    <TextGenerateEffect 
+                      words={headingWords} 
+                      onComplete={() => setShowSubheading(true)}
+                    />
+                  </div>
                 </motion.div>
-                <div className="text-3xl lg:text-5xl lg:leading-tight font-bold text-blue-900">
-                  <TextGenerateEffect 
-                    words={headingWords} 
-                    onComplete={() => setShowSubheading(true)}
-                  />
-                </div>
-              </motion.div>
-              {showSubheading && (
+                {showSubheading && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="text-xl lg:text-2xl lg:leading-tight mt-2 font-sans font-medium text-[#1447e6] pl-1"
+                  >
+                    <TextGenerateEffect 
+                      words={subheadingWords} 
+                      onComplete={() => setShowDescription(true)}
+                    />
+                  </motion.div>
+                )}
+                {showDescription && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="text-base lg:text-lg lg:leading-relaxed mt-3 font-sans font-normal text-[#2d2d2d] pl-1"
+                  >
+                    <TextGenerateEffect 
+                      words={descriptionWords} 
+                      onComplete={() => setShowContent(true)}
+                    />
+                  </motion.div>
+                )}
+                {/* Course info badges */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-xl lg:text-2xl lg:leading-tight mt-2 font-medium text-blue-700 pl-1"
+                  transition={{ duration: 0.5, delay: 0.35 }}
+                  className="mt-5 flex flex-wrap gap-3"
                 >
-                  <TextGenerateEffect 
-                    words={subheadingWords} 
-                    onComplete={() => setShowDescription(true)}
-                  />
-                </motion.div>
-              )}
-              {showDescription && (
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-base lg:text-lg lg:leading-relaxed mt-3 text-neutral-600 pl-1"
-                >
-                  <TextGenerateEffect 
-                    words={descriptionWords} 
-                    onComplete={() => setShowContent(true)}
-                  />
-                </motion.div>
-              )}
-              {/* Course info badges */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.35 }}
-                className="mt-5 flex flex-wrap gap-3"
-              >
-                <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 text-blue-700 border border-blue-200 px-4 py-1.5 text-sm font-semibold">
-                  Starts 10 November
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-white text-blue-800 border border-blue-200 px-4 py-1.5 text-sm font-semibold">
-                  Timings: 7:00–8:30 AM IST
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-blue-600 text-white border border-blue-700 px-4 py-1.5 text-sm font-semibold shadow-sm">
-                  Only 7 seats left (15 per batch)
-                </span>
-              </motion.div>
-            </div>
-            {/* Promo video */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5 }}
-              className="mb-10 p-2 bg-transparent"
-            >
-              <div className="relative rounded-2xl overflow-hidden border border-blue-200 bg-white shadow-lg">
-                <div className="w-full h-[260px] sm:h-[360px] md:h-[420px] lg:h-[520px] xl:h-[620px]">
-                  <iframe
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/R9lH7uaSgUE"
-                    title="“Master Azure DevOps from Real Engineers | Hands-on Azure &amp; DevOps Course&quot;"
-                    frameBorder="0"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
-            </motion.div>
-            {showContent && modules.map((mod, i) => (
-              <motion.div
-                key={mod.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.05, type: "spring", stiffness: 90 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="mb-10 p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-blue-100"
-              >
-                <div className="inline-flex items-center gap-2 mb-4">
-                  <span className="px-4 py-1.5 bg-blue-600 text-white text-sm font-semibold rounded-full shadow-md">
-                    Module {i + 1}
+                  <span className="glass-card glass-card-blur-lg glass-card-opacity-medium inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-sans font-semibold text-[#1447e6] whitespace-nowrap">
+                    Starts 10 November
                   </span>
-                </div>
-                <div className="text-2xl font-bold mb-5 text-blue-900">{mod.title}</div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {mod.topics.map((topic) => (
-                    <CurriculumCard key={topic.title} {...topic} />
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          {/* Right side - Sticky Payment (30%) */}
-          <div className="lg:w-[30%]">
-            <div className="sticky top-28 bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-blue-200">
-              {/* Pricing */}
-              <div className="mb-4">
-                <div className="text-sm font-semibold text-blue-900/70">Course Fee</div>
-                <div className="mt-1 flex items-end gap-2">
-                  <span className="text-neutral-500 line-through text-lg">₹25,000</span>
-                  <span className="text-2xl font-extrabold text-blue-900">₹22,000</span>
-                </div>
-                <div className="mt-2 text-sm text-blue-900/80">
-                  Pay <span className="font-semibold">₹3,000</span> now to block your seat. The remaining balance will be collected by our team after registration.
-                </div>
-                <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1 text-xs font-semibold">
-                  Only 7 seats left • Starts 10 Nov • 7:00–8:30 AM IST
-                </div>
+                  <span className="glass-card glass-card-blur-lg glass-card-opacity-light inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-sans font-semibold text-[#2d2d2d] whitespace-nowrap">
+                    Timings: 7:00–8:30 AM IST
+                  </span>
+                  <span className="glass-card glass-card-blur-lg glass-card-opacity-medium inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-sans font-semibold text-[#1447e6] whitespace-nowrap">
+                    Only 7 seats left (15 per batch)
+                  </span>
+                </motion.div>
               </div>
 
-              {/* Benefits bullets */}
-              <ul className="mb-6 space-y-2 text-sm text-blue-900/80">
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-blue-600" /> Lifetime access with recordings</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-blue-600" /> Capstone project on Azure</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-blue-600" /> Free previews, secure streaming</li>
-              </ul>
+              {/* Right side - YouTube Embed */}
+              <div className="flex-1 w-full md:max-w-[677px]">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="glass-card glass-card-blur-md glass-card-opacity-light relative rounded-[20px] overflow-hidden p-2">
+                    <div className="w-full h-[260px] sm:h-[360px] md:h-[420px] lg:h-[498px] rounded-[16px] overflow-hidden">
+                      <iframe
+                        className="w-full h-full"
+                        src="https://www.youtube.com/embed/R9lH7uaSgUE"
+                        title="Master Azure DevOps from Real Engineers | Hands-on Azure & DevOps Course"
+                        frameBorder="0"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      {/* Pricing Section - Outside Hero Container */}
+      <div className="relative w-full mt-[80px] md:mt-[120px]">
+        <div className="relative flex flex-col gap-[60px] md:gap-[80px] items-center justify-center pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px] px-4 max-w-[1447.97px] mx-auto">
+          <div className="glass-card glass-card-blur-sm glass-card-opacity-light relative rounded-[20px] p-6 md:p-8 max-w-[1260px] w-full overflow-hidden">
+            <div className="flex flex-col items-center text-center mb-6 relative z-10">
+              <div className="text-sm font-sans font-semibold text-[#2d2d2d]/70 mb-2">Course Fee</div>
+              <div className="flex items-end justify-center gap-2 mb-4">
+                <span className="text-[#2d2d2d]/50 line-through text-lg font-sans">₹25,000</span>
+                <span className="text-3xl md:text-4xl font-outfit font-extrabold text-[#2d2d2d]">₹22,000</span>
+              </div>
+              <div className="text-sm md:text-base font-sans font-normal text-[#2d2d2d] max-w-[686px] mb-4">
+                Pay <span className="font-semibold">₹3,000</span> now to block your seat. The remaining balance will be collected by our team after registration.
+              </div>
+              {/* Benefits bullets */}
+              <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm font-sans font-normal text-[#2d2d2d]">
+                <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#1447e6]" /> Lifetime access with recordings</div>
+                <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#1447e6]" /> Capstone project on Azure</div>
+                <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#1447e6]" /> Free previews, secure streaming</div>
+              </div>
+              <div className="glass-card glass-card-blur-lg glass-card-opacity-medium inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-sans font-semibold text-[#1447e6] whitespace-nowrap mb-6">
+                Only 7 seats left • Starts 10 Nov • 7:00–8:30 AM IST
+              </div>
               {/* Razorpay Button */}
               <RazorpayButton
                 url="https://pages.razorpay.com/pl_RDakh7O49L14YT/view?label=azure_course"
                 text="Block Your Seat — ₹3,000"
-                color="#1d4ed8"
+                color="#1447e6"
                 size="large"
-                className="w-full"
+                className="w-full max-w-[476px]"
               />
-
-              <div className="mt-3 text-[12px] text-neutral-500 text-center">Payments powered by Razorpay</div>
+              <div className="mt-3 text-[12px] font-sans text-[#2d2d2d]/50 text-center">Payments powered by Razorpay</div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Modules Content Section - Outside Hero Container */}
+      <div className="relative w-full mt-[80px] md:mt-[120px]">
+        <div className="relative flex flex-col gap-[60px] md:gap-[80px] items-center justify-center pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px] px-4 max-w-[1447.97px] mx-auto">
+          {showContent && modules.map((mod, i) => (
+            <motion.div
+              key={mod.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.05, type: "spring", stiffness: 90 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="w-full max-w-[1261px]"
+            >
+              <div className="glass-card glass-card-blur-sm glass-card-opacity-light p-6 md:p-8 rounded-[20px]">
+                <div className="inline-flex items-center gap-2 mb-4">
+                  <span className="glass-card glass-card-blur-lg glass-card-opacity-medium px-4 py-1.5 text-sm font-sans font-semibold rounded-full text-[#1447e6] whitespace-nowrap">
+                    Module {i + 1}
+                  </span>
+                </div>
+                <div className="text-2xl md:text-3xl font-outfit font-semibold mb-5 text-[#2d2d2d]">{mod.title}</div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {mod.topics.map((topic) => (
+                    <CurriculumCard key={topic.title} {...topic} />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer Section */}
+      <div className="relative w-full mt-[80px] md:mt-[120px]">
+        <div className="relative flex flex-col gap-[60px] md:gap-[80px] items-center justify-center pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px] px-4 max-w-[1447.97px] mx-auto">
+          <Footer />
         </div>
       </div>
     </div>

@@ -78,8 +78,8 @@ export default function CoursesPage() {
             <div className="flex flex-col gap-[30px] items-start relative shrink-0 w-full md:w-[60%]">
               <div className="flex flex-col gap-[20px] items-start relative shrink-0 w-full">
                 <h1 className="font-outfit font-semibold relative shrink-0 text-[#2d2d2d] text-[32px] md:text-[56px] w-full leading-tight">
-                  DevOps Courses & Projects
-                </h1>
+            DevOps Courses & Projects
+          </h1>
                 <p className="font-sans font-medium not-italic relative shrink-0 text-[#1447e6] text-[18px] md:text-[22px] w-full">
                   Master AWS DevOps, Azure DevOps, and Real-World DevSecOps Projects
                 </p>
@@ -244,21 +244,21 @@ export default function CoursesPage() {
       <div id="courses-section" className="relative w-full mt-[80px] md:mt-[120px]">
         <div className="relative flex flex-col gap-[60px] md:gap-[80px] items-center justify-center pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px] px-4 max-w-[1447.97px] mx-auto">
           {/* Courses Grid */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 100 }}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 100 }}
             className="w-full"
-          >
+        >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] items-stretch w-full">
-              {courses.map((course, index) => (
-                <motion.div
-                  key={course.id}
-                  custom={index}
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
+            {courses.map((course, index) => (
+              <motion.div
+                key={course.id}
+                custom={index}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
                   className="relative group w-full"
                 >
                   <div className={`${
@@ -270,16 +270,16 @@ export default function CoursesPage() {
                       {/* Icon and Badge */}
                       <div className="flex items-center justify-between w-full">
                         <div className={`${course.iconBg} flex items-center justify-center p-[12px] relative rounded-[50px] shrink-0 size-[60px] shadow-lg`}>
-                          {course.icon}
-                        </div>
+                    {course.icon}
+                  </div>
                         <span className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap ${
-                          course.isProject 
+                        course.isProject 
                             ? "bg-white/50 text-white" 
                             : "glass-card glass-card-blur-sm glass-card-opacity-medium text-[#2d2d2d]"
-                        }`}>
-                          {course.isProject ? 'Project' : 'Featured'}
-                        </span>
-                      </div>
+                      }`}>
+                        {course.isProject ? 'Project' : 'Featured'}
+                      </span>
+                    </div>
 
                       {/* Title */}
                       <h2 className={`font-sans font-semibold leading-tight text-[20px] md:text-[24px] w-full ${
@@ -297,7 +297,7 @@ export default function CoursesPage() {
 
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 w-full">
-                        {course.tags.map((tag, i) => (
+                      {course.tags.map((tag, i) => (
                           <span 
                             key={tag} 
                             className={`inline-block text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap ${
@@ -308,8 +308,8 @@ export default function CoursesPage() {
                           >
                             {tag}
                           </span>
-                        ))}
-                      </div>
+                      ))}
+                    </div>
 
                       {/* Footer */}
                       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 w-full mt-auto pt-4">
@@ -326,15 +326,15 @@ export default function CoursesPage() {
                           }`}>
                             <span className="whitespace-nowrap">View Details</span>
                             <FaAngleRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                          </button>
-                        </Link>
-                      </div>
+                        </button>
+                      </Link>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
           {/* Footer */}
           <Footer />

@@ -1,5 +1,5 @@
 // Image assets exported from Figma
-export const imgImage10 = "/image16.png";
+export const imgImage10 = "/image18.png";
 export const imgImage2 = "/image2.jpg";
 export const imgImage3 = "/image3.jpg";
 export const imgCustomerPhoto1 = "/customerPhoto1.jpg";
